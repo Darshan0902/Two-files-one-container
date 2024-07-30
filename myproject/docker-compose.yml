@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  app1:
+    build: .
+    container_name: app1
+    ports:
+      - "5000:8000"
+    volumes:
+      - .:/usr/src/app
+
+  app2:
+    build: .
+    container_name: app2
+    ports:
+      - "3000:5000"
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - app1
